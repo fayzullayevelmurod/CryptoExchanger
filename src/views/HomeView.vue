@@ -68,7 +68,12 @@
                 </button>
               </div>
               <div class="buttons">
-                <button v-for="i in 9" :key="i" :class="i == 1 ? 'active' : ''">
+                <button
+                  v-for="i in 9"
+                  @click="select.sender = i"
+                  :key="i"
+                  :class="i == select.sender ? 'active' : ''"
+                >
                   <div class="img">
                     <img src="@/assets/images/sberbank_icon.svg" alt="" />
                   </div>
@@ -85,13 +90,22 @@
                 </button>
               </div>
               <div class="buttons">
-                <button v-for="i in 9" :key="i" :class="i == 1 ? 'active' : ''">
+                <!-- @click="select.receive = item.id" -->
+                <button
+                  v-for="item in currencyReceiveList"
+                  @click="changeSelect(item)"
+                  :key="item.id"
+                  :class="item.id == select.receive ? 'active' : ''"
+                >
                   <div class="img">
-                    <img src="@/assets/images/bitcoin_icon.svg" alt="" />
+                    <img
+                      :src="require(`'@/assets/images/${item.icon}.svg`)"
+                      alt=""
+                    />
                   </div>
                   <div class="text">
-                    <div class="text_title">Bitcoin (BEP20)</div>
-                    <div class="text_value">40 BTC</div>
+                    <div class="text_title">{{ item.name }}</div>
+                    <div class="text_value">{{ item.amount }}</div>
                   </div>
                 </button>
               </div>
@@ -114,26 +128,46 @@
                     <span class="max">Max: 500000 RUB</span>
                   </label>
                   <div class="input">
-                    <input type="text" value="0" />
+                    <input type="number" v-model="senderInput" />
                     <div class="calculate_cender">
-                      <div class="amount_name">RUB</div>
-                      <img src="@/assets/images/sberbank_icon.svg" alt="" />
+                      <div class="amount_name">
+                        {{ select.datas.receive.unit }}
+                      </div>
+                      <img
+                        :src="
+                          'src/assets/images/' +
+                          select.datas.receive.icon +
+                          '.svg'
+                        "
+                        alt=""
+                      />
                     </div>
                   </div>
                 </div>
                 <div class="form_control input_receive">
                   <label>
-                    <span class="min">Резервы: 40 BTC</span>
+                    <span class="min"
+                      >Резервы: {{ select.datas.sender.amount }}</span
+                    >
                   </label>
                   <div class="input">
-                    <input type="text" value="0" />
+                    <input type="number" disabled v-model="receiverInput" />
                     <div class="calculate_cender">
-                      <div class="amount_name">BTC</div>
-                      <img src="@/assets/images/bitcoin_icon.svg" alt="" />
+                      <div class="amount_name">
+                        {{ select.datas.sender.unit }}
+                      </div>
+                      <img
+                        :src="
+                          'src/assets/images/' +
+                          select.datas.sender.icon +
+                          '.svg'
+                        "
+                        alt=""
+                      />
                     </div>
                   </div>
                 </div>
-                <button class="calculate_btn">
+                <button @click="changeCalculation()" class="calculate_btn">
                   <img src="@/assets/images/calculate_icon.svg" alt="" />
                 </button>
               </div>
@@ -144,8 +178,8 @@
                     <span class="min">Номер карты отправителя</span>
                     <img src="@/assets/images/answer_icon.svg" alt="" />
                   </label>
-                  <div class="input">
-                    <input type="text" value="2145 5125 7532 4215|" />
+                  <div class="input" v-mask="'#### #### #### ####'">
+                    <input type="text" value="1111 2222 3333 4444" />
                     <div class="calculate_cender">
                       <div class="amount_name">RUB</div>
                       <img src="@/assets/images/sberbank_icon.svg" alt="" />
@@ -212,7 +246,17 @@
 
               <div class="check">
                 <input type="checkbox" id="remainder" />
-                <label for="remainder" role="button">
+                <label
+                  @click="radioCheck = !radioCheck"
+                  for="remainder"
+                  role="button"
+                >
+                  <img
+                    v-if="radioCheck"
+                    src="@/assets/images/check_icon.svg"
+                    alt=""
+                  />
+                  <img v-else src="@/assets/images/check.svg" alt="" />
                   <div>
                     Я соглашаюсь с <span>правилами обмена</span> и
                     <span>политикой AML/KYS</span>
@@ -255,41 +299,154 @@
 </template>
 
 <script>
+import { mask } from "vue-the-mask";
+
+export default {
+  directives: { mask },
+  data() {
+    return {
+      currencyReceiveList: [
+        {
+          id: 1,
+          name: "Bitcoin (BEP20)",
+          amount: "40 BTC",
+          icon: "bitcoin_icon",
+          toRuble: 2710280.9,
+          unit: "BTC",
+        },
+        {
+          id: 2,
+          name: "Tether",
+          amount: "50 000 USDT",
+          icon: "tether",
+          toRuble: 90.65,
+          unit: "USDT",
+        },
+        {
+          id: 3,
+          name: "Prizm",
+          amount: "12 214 521 5125 PZM",
+          icon: "prizm",
+          toRuble: 0.26,
+          unit: "PZM",
+        },
+        {
+          id: 4,
+          name: "Ecc",
+          amount: "122 214 521 5125 ECC",
+          icon: "ecc",
+          toRuble: 1.023,
+          unit: "ECC",
+        },
+        {
+          id: 5,
+          name: "Ethereum",
+          amount: "521 5125 ETH",
+          icon: "ethereum",
+          toRuble: 172235,
+          unit: "ETH",
+        },
+        {
+          id: 6,
+          name: "Ion",
+          amount: "12 521 5125 ION",
+          icon: "ion",
+          toRuble: 49290.45,
+          unit: "ION",
+        },
+        {
+          id: 7,
+          name: "Bealf",
+          amount: "122 521 5125 ELF",
+          icon: "bealf",
+          toRuble: 22.21,
+          unit: "ELF",
+        },
+        {
+          id: 8,
+          name: "BOScoin",
+          amount: "412 142 124 114 412 BOS",
+          icon: "boscoin",
+          toRuble: 0.4705,
+          unit: "BOS",
+        },
+        {
+          id: 9,
+          name: "Golem",
+          amount: "125 152 512 GNT",
+          icon: "golem",
+          toRuble: 13.74,
+          unit: "GNT",
+        },
+      ],
+      rubleTo: true,
+      select: {
+        receive: 1,
+        sender: 1,
+        datas: {
+          toRubleAmount: 2710280.9,
+          receive: {
+            id: 1,
+            amount: "40 BTC",
+            icon: "sberbank_icon",
+            toRuble: 1,
+            unit: "RUB",
+          },
+          sender: {
+            id: 1,
+            name: "Bitcoin (BEP20)",
+            amount: "40 BTC",
+            icon: "bitcoin_icon",
+            toRuble: 2710280.9,
+            unit: "BTC",
+          },
+        },
+      },
+      senderInput: "",
+      receiverInput: "",
+      changed: false,
+      radioCheck: false,
+    };
+  },
+  watch: {
+    senderInput() {
+      if (!this.changed) {
+        if (this.select.datas.receive.unit == "RUB") {
+          this.receiverInput =
+            this.senderInput * this.select.datas.toRubleAmount;
+          console.log("Rublega alyandi");
+        } else {
+          this.receiverInput = (
+            this.senderInput / this.select.datas.toRubleAmount
+          ).toFixed(2);
+          console.log("ruble emas");
+        }
+      } else {
+        this.changed = false;
+      }
+    },
+  },
+  methods: {
+    changeCalculation() {
+      this.changed = true;
+      let receiver = this.select.datas.receive;
+      this.select.datas.receive = this.select.datas.sender;
+      this.select.datas.sender = receiver;
+      let r = parseFloat(this.receiverInput);
+      this.receiverInput = parseFloat(this.senderInput);
+      this.senderInput = r;
+      this.rubleTo = !this.rubleTo;
+    },
+    changeSelect(data) {
+      this.select.receive = data.id;
+      if (this.select.datas.receive.unit == "RUB") {
+        this.select.datas.sender = data;
+      } else {
+        this.select.datas.receive = data;
+      }
+      console.log(data);
+      this.select.datas.toRubleAmount = data.toRuble;
+    },
+  },
+};
 </script>
-
-<style scoped>
-.index
-  #calculation
-  .calculation_wrapper
-  .calculate
-  .content
-  .check
-  label::before {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 0;
-  top: 0;
-  border-radius: 50%;
-  background: #6552fe;
-  opacity: 1;
-}
-
-.index
-  #calculation
-  .calculation_wrapper
-  .calculate
-  .content
-  .check
-  input:checked
-  ~ label::after {
-  background: url("~@/assets/images/check_icon.png");
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-}
-</style>
