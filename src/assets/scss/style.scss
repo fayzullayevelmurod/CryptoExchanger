@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -9,11 +11,24 @@ body {
     color: white;
 }
 
+main {
+    width: 100%;
+    overflow: hidden;
+}
+
 .main_container {
     max-width: 1510px;
     padding: 0 50px;
     margin: 0 auto;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 header {
     .header_wrapper {
@@ -115,7 +130,7 @@ header {
 
             .img_1 {
                 flex-grow: 1;
-                flex-basis: 200px;
+                flex-basis: 180px;
             }
 
             .img_2 {
@@ -125,7 +140,7 @@ header {
 
             .img_3 {
                 flex-grow: 1;
-                flex-basis: 350px;
+                flex-basis: 200px;
             }
 
         }
@@ -472,8 +487,7 @@ header {
                             .disabled {
                                 border-radius: 8px;
                                 border: 1px solid rgba(255, 255, 255, 0.50);
-                                // background: rgba(255, 255, 255, 0.05);
-                                background: transparent;
+                                background: rgba(255, 255, 255, 0.05);
 
                                 .calculate_cender {
                                     opacity: 0.5;
@@ -515,18 +529,6 @@ header {
                             display: none;
                         }
 
-                        input:checked~label {
-                            &::after {
-                                content: "";
-                                position: absolute;
-                                background: ('./check_icon.svg');
-                                top: 0;
-                                left: 0;
-                                width: 20px;
-                                height: 20px;
-                            }
-                        }
-
                         label {
                             color: #FFF;
                             font-family: "Poppins", sans-serif;
@@ -534,8 +536,10 @@ header {
                             font-style: normal;
                             font-weight: 400;
                             line-height: 120%;
-                            padding-left: 28px;
                             position: relative;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
 
                             div {
                                 display: inline-block;
