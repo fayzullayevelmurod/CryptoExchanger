@@ -49,7 +49,16 @@
         </div>
 
         <button class="home_footer">
-          <img src="@/assets/images/home_footer_icon.svg" alt="" />
+          <img
+            src="@/assets/images/home_footer_icon.svg"
+            alt=""
+            class="default"
+          />
+          <img
+            src="@/assets/images/home_footer_icon_hover.svg"
+            class="hover"
+            alt=""
+          />
           Перейти к обменнику
         </button>
       </div>
@@ -98,10 +107,7 @@
                   :class="item.id == select.receive ? 'active' : ''"
                 >
                   <div class="img">
-                    <img
-                      :src="require(`'@/assets/images/${item.icon}.svg`)"
-                      alt=""
-                    />
+                    <img src="@/assets/images/bitcoin_icon.svg" alt="" />
                   </div>
                   <div class="text">
                     <div class="text_title">{{ item.name }}</div>
@@ -127,7 +133,10 @@
                     <span class="min">Min: 700 RUB</span>
                     <span class="max">Max: 500000 RUB</span>
                   </label>
-                  <div class="input">
+                  <div
+                    class="input"
+                    :class="senderInput ? 'input_active' : 'input'"
+                  >
                     <input type="number" v-model="senderInput" />
                     <div class="calculate_cender">
                       <div class="amount_name">
@@ -150,7 +159,10 @@
                       >Резервы: {{ select.datas.sender.amount }}</span
                     >
                   </label>
-                  <div class="input">
+                  <div
+                    class="input"
+                    :class="receiverInput ? 'input_active' : ''"
+                  >
                     <input type="number" disabled v-model="receiverInput" />
                     <div class="calculate_cender">
                       <div class="amount_name">
@@ -178,20 +190,27 @@
                     <span class="min">Номер карты отправителя</span>
                     <img src="@/assets/images/answer_icon.svg" alt="" />
                   </label>
-                  <div class="input" v-mask="'#### #### #### ####'">
-                    <input type="text" value="1111 2222 3333 4444" />
+                  <div
+                    class="input"
+                    v-mask="'#### #### #### ####'"
+                    :class="plastCard ? 'input_active' : ''"
+                  >
+                    <input type="text" v-model="plastCard" />
                     <div class="calculate_cender">
                       <div class="amount_name">RUB</div>
                       <img src="@/assets/images/sberbank_icon.svg" alt="" />
                     </div>
                   </div>
                 </div>
-                <div class="form_control input_receive">
+                <div class="form_control input_receive kashelog">
                   <label>
                     <span class="min">Bitcoin кошелёк получателя</span>
                   </label>
-                  <div class="input disabled">
-                    <input type="text" />
+                  <div
+                    class="input disabled"
+                    :class="cashelog ? 'input_active' : ''"
+                  >
+                    <input type="text" v-model="cashelog" />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
                       <img src="@/assets/images/bitcoin_icon.svg" alt="" />
@@ -205,8 +224,11 @@
                   <label>
                     <span class="min">ФИО отправителя</span>
                   </label>
-                  <div class="input disabled">
-                    <input type="text" value="" />
+                  <div
+                    class="input disabled full_name"
+                    :class="fullName ? 'input_active' : ''"
+                  >
+                    <input type="text" v-model="fullName" />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
                       <img src="@/assets/images/sberbank_icon.svg" alt="" />
@@ -222,23 +244,31 @@
                   <label>
                     <span class="min">Ваш E-mail</span>
                   </label>
-                  <div class="input email disabled">
-                    <input type="email" value="" />
+                  <div
+                    class="input email disabled"
+                    :class="email ? 'input_active' : ''"
+                  >
+                    <input type="email" v-model="email" />
                     <div class="calculate_cender">
-                      <div class="amount_name"></div>
-                      <img src="@/assets/images/email_icon.svg" alt="" />
+                      <img src="@/assets/images/email_icon.png" alt="" />
                     </div>
                   </div>
                 </div>
-                <div class="form_control input_receive">
+                <div class="form_control input_receive promokod_wrapper">
                   <label class="right">
-                    <span class="min"> Промокод, необязательно </span>
+                    <span class="min">
+                      Промокод, необязательно
+                      <img src="@/assets/images/answer_icon.svg" alt="" />
+                    </span>
                   </label>
-                  <div class="input disabled">
-                    <input type="text" />
+                  <div
+                    class="input disabled promokod"
+                    :class="promocod ? 'input_active' : ''"
+                  >
+                    <input type="number" v-model="promocod" />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
-                      <img src="@/assets/images/bitcoin_icon.svg" alt="" />
+                      <!-- <img src="@/assets/images/bitcoin_icon.svg" alt="" /> -->
                     </div>
                   </div>
                 </div>
@@ -264,7 +294,9 @@
                 </label>
               </div>
 
-              <button class="submit">Перейти к оплате</button>
+              <button @click="confirmation = true" class="submit">
+                Перейти к оплате
+              </button>
             </div>
           </div>
         </div>
@@ -289,19 +321,37 @@
           </div>
         </div>
 
-        <a href="#" class="link">
-          <img src="@/assets/images/arrow_top.svg" alt="" />
+        <a @click="commentModal = true" class="link" role="button">
+          <div class="img">
+            <img src="@/assets/images/Icon.png" alt="" />
+          </div>
           Оставить отзыв
         </a>
       </div>
     </section>
+
+    <CommentModal
+      v-if="commentModal"
+      @closeCommentModal="closeCommentModal()"
+      :modal="commentModal"
+    />
+    <ApplicationConfirmation
+      v-if="confirmation"
+      @closeConfirmModal="closeConfirmModal()"
+    />
   </main>
 </template>
 
 <script>
 import { mask } from "vue-the-mask";
+import CommentModal from "@/components/CommentModal.vue";
+import ApplicationConfirmation from "../components/ApplicationConfirmation.vue";
 
 export default {
+  components: {
+    CommentModal,
+    ApplicationConfirmation,
+  },
   directives: { mask },
   data() {
     return {
@@ -406,20 +456,26 @@ export default {
       receiverInput: "",
       changed: false,
       radioCheck: false,
+      commentModal: false,
+      confirmation: false,
+      plastCard: "",
+      cashelog: "",
+      email: "",
+      fullName: "",
+      promocod: "",
     };
   },
   watch: {
     senderInput() {
       if (!this.changed) {
         if (this.select.datas.receive.unit == "RUB") {
-          this.receiverInput =
-            this.senderInput * this.select.datas.toRubleAmount;
-          console.log("Rublega alyandi");
+          this.receiverInput = (
+            this.senderInput * this.select.datas.toRubleAmount
+          ).toFixed(4);
         } else {
           this.receiverInput = (
             this.senderInput / this.select.datas.toRubleAmount
           ).toFixed(2);
-          console.log("ruble emas");
         }
       } else {
         this.changed = false;
@@ -446,6 +502,12 @@ export default {
       }
       console.log(data);
       this.select.datas.toRubleAmount = data.toRuble;
+    },
+    closeCommentModal() {
+      this.commentModal = false;
+    },
+    closeConfirmModal() {
+      this.confirmation = false;
     },
   },
 };
