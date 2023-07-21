@@ -10,7 +10,7 @@
           <router-link class="menu_link" to="/">Обменник</router-link>
           <router-link class="menu_link" to="/">Правила обмена</router-link>
           <router-link class="menu_link" to="/">FAQ</router-link>
-          <router-link class="menu_link" to="/">Контакты</router-link>
+          <router-link class="menu_link" to="/contact">Контакты</router-link>
         </div>
       </div>
     </div>
