@@ -8,6 +8,7 @@
 
 button {
     cursor: pointer;
+
     &:hover {
         cursor: pointer;
     }
@@ -55,7 +56,7 @@ header {
         border-radius: 16px;
         border: 1px solid rgba(255, 255, 255, 0.25);
         background: rgba(255, 255, 255, 0.02);
-        padding: 30px;
+        padding: 0 30px;
         margin-top: 30px;
         margin-bottom: 100px;
 
@@ -72,6 +73,24 @@ header {
                 font-weight: 500;
                 line-height: 110%;
                 text-decoration: none;
+                position: relative;
+                padding: 30px 0;
+                opacity: 0.699999988079071;
+            }
+
+            .menu_link_active {
+                opacity: 1;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 100%;
+                    border-radius: 2px 2px 0px 0px;
+                    background: #6552FE;
+                    height: 4px;
+                }
             }
         }
     }
@@ -1730,24 +1749,28 @@ header {
 }
 
 .contact {
-    position: relative;
+
+    // position: relative;
     // scss code here
-    .contact_title{
-        h2{
+    .contact_title {
+        h2 {
             color: var(--ffffff, #FFF);
-            font-family: 'Poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 48px;
             font-style: normal;
             font-weight: 600;
-            line-height: 110%; /* 52.8px */
+            line-height: 110%;
+            /* 52.8px */
             margin-bottom: 50px;
         }
     }
-    .contact_main{
+
+    .contact_main {
         display: flex;
         gap: 30px;
         margin-bottom: 479px;
-        .contact_main_left{
+
+        .contact_main_left {
             display: flex;
             gap: 24px;
             flex-direction: column;
@@ -1756,21 +1779,25 @@ header {
             border-radius: 16px;
             border: 1px solid var(--stroke-5-e-5-e-65, #5E5E65);
             background: rgba(255, 255, 255, 0.15);
-            .contact_block{
+
+            .contact_block {
                 gap: 16px;
                 display: flex;
-                span{
+
+                span {
                     color: #FFF;
-                    font-family: 'Poppins',sans-serif;
+                    font-family: 'Poppins', sans-serif;
                     font-size: 18px;
                     font-style: normal;
                     font-weight: 400;
-                    line-height: 120%; /* 21.6px */
+                    line-height: 120%;
+                    /* 21.6px */
                 }
-                a{
+
+                a {
                     margin-left: 10px;
                     color: var(--brand, #6552FE);
-                    font-family: 'Poppins',sans-serif;
+                    font-family: 'Poppins', sans-serif;
                     font-size: 18px;
                     font-style: normal;
                     font-weight: 400;
@@ -1779,39 +1806,118 @@ header {
                 }
             }
         }
-        .contact_main_right{
+
+        .contact_main_right {
             flex: 1;
             padding: 30px;
             border-radius: 16px;
             border: 1px solid var(--stroke-5-e-5-e-65, #5E5E65);
             background: rgba(255, 255, 255, 0.15);
-            .contact_block{
-                p{
+
+            .contact_block {
+                p {
                     max-width: 391px;
                     margin-top: 16px;
                     color: #FFF;
-                    font-family: 'Poppins',sans-serif;
+                    font-family: 'Poppins', sans-serif;
                     font-size: 18px;
                     font-style: normal;
                     font-weight: 400;
-                    line-height: 120%; /* 21.6px */
+                    line-height: 120%;
+                    /* 21.6px */
                 }
             }
         }
     }
-    .contact_bg_bottom{
+
+    .contact_bg_bottom {
         position: absolute;
         bottom: 0;
         right: 0;
     }
 }
 
+@mixin title {
+    h1 {
+        color: var(--ffffff, #FFF);
+        font-family: "Poppins", sans-serif;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 110%;
+        margin-bottom: 50px;
+    }
+
+    .content {
+        margin-bottom: 100px;
+    }
+
+    .content_body {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .rules_bg {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+}
+
 .faq {
-    // scss code here`
+    position: relative;
+    @include title();
 }
 
 .rules {
-    // scss code here
+    position: relative;
+    @include title();
+}
+
+.accardion {
+    border-radius: 16px;
+    border: 1px solid #5E5E65;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 24px;
+
+    button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: transparent;
+
+        span {
+            color: #FFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 150%;
+        }
+    }
+
+    .text {
+        color: #FFF;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        height: 0;
+        overflow: hidden;
+        transition: .3s ease all;
+    }
+
+    .open {
+        margin-top: 24px;
+        height: auto;
+    }
 }
 
 footer {

@@ -1,19 +1,37 @@
 <template>
   <div class="rules">
+    <img src="@/assets/images/rules_bg.png" alt="" class="rules_bg">
     <div class="main_container">
       <div class="content">
-        this is rules
+        <h1>Правила обмена</h1>
+        <div class="content_body">
+          <Accardion v-for="(item, i) in list" :key="i" :title="item.title" :text="item.text" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Accardion from '@/components/Accardion.vue';
 export default {
-
+  components: {
+    Accardion
+  },
+  data () {
+    return {
+      list: [
+        {title: "Общие положения", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Предмет соглашения и порядок вступления его в силу", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Предмет соглашения, стоимость оказываемых услуг", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Условия предоставления услуг", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Политика конфиденциальности", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Политика противодействия отмыванию денег и незаконным операциям ", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Ограничение ответственности", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Порядок принятия претензий и разрешения споров", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+        {title: "Заключительные положения", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque incidunt ducimus molestiae eos, nulla rem atque repudiandae ex ab laboriosam saepe quidem corporis libero ratione? Dolores provident iusto expedita quod, illum voluptate quis porro sunt labore, inventore facere quo nobis omnis optio voluptates? Ex harum laudantium rem dolore asperiores, unde voluptatem accusamus autem alias dignissimos explicabo eius ipsa voluptatibus vero est! Quasi dignissimos ex temporibus consequatur distinctio. Nostrum deleniti ipsa non eveniet, sit voluptatem minima? Delectus sed consequatur animi quasi alias voluptatibus corporis repellendus dicta voluptas, illo id, dolore reprehenderit modi excepturi asperiores officia nemo dolorum, accusamus repellat facilis."},
+      ]
+    }
+  }
 }
 </script>
-
-<style>
-
-</style>
