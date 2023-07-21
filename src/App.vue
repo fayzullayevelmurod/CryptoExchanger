@@ -4,6 +4,7 @@
     <Header />
     <RouterView />
     <Footer />
+    <show-pages />
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import { RouterLink, RouterView } from "vue-router";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import ShowPages from "@/components/ShowPages.vue";
 
 export default {
   components: {
@@ -18,6 +20,7 @@ export default {
     RouterLink,
     RouterView,
     Footer,
+    ShowPages
   },
 };
 </script>
