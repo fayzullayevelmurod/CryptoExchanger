@@ -49,16 +49,9 @@
         </div>
 
         <button class="home_footer">
-          <img
-            src="@/assets/images/home_footer_icon.svg"
-            alt=""
-            class="default"
-          />
-          <img
-            src="@/assets/images/home_footer_icon_hover.svg"
-            class="hover"
-            alt=""
-          />
+          <div class="img">
+            <img src="@/assets/images/arrow_bottom_icon.svg" alt="" />
+          </div>
           Перейти к обменнику
         </button>
       </div>
@@ -70,8 +63,18 @@
           <div class="amont_type">
             <div class="type_item sender">
               <div class="title">Отдаете</div>
-              <div class="search">
-                <input type="text" placeholder="Найти валюту" />
+              <div
+                class="search"
+                :class="check.searchSender ? check.searchSender : 'input'"
+              >
+                <input
+                  type="text"
+                  @focus="checkInout('searchSender', searchSender)"
+                  @input="enterInput('searchSender', searchSender)"
+                  @blur="checkInput('searchSender', searchSender)"
+                  v-model="searchSender"
+                  placeholder="Найти валюту"
+                />
                 <button>
                   <img src="@/assets/images/search_icon.svg" alt="" />
                 </button>
@@ -92,8 +95,18 @@
             </div>
             <div class="type_item receive">
               <div class="title">Получаете</div>
-              <div class="search">
-                <input type="text" placeholder="Найти валюту" />
+              <div
+                class="search"
+                :class="check.searchReceive ? check.searchReceive : 'input'"
+              >
+                <input
+                  type="text"
+                  @focus="checkInout('searchReceive', searchReceive)"
+                  @input="enterInput('searchReceive', searchReceive)"
+                  @blur="checkInput('searchReceive', searchReceive)"
+                  v-model="searchReceive"
+                  placeholder="Найти валюту"
+                />
                 <button>
                   <img src="@/assets/images/search_icon.svg" alt="" />
                 </button>
@@ -135,16 +148,22 @@
                   </label>
                   <div
                     class="input"
-                    :class="senderInput ? 'input_active' : 'input'"
+                    :class="check.senderInput ? check.senderInput : 'input'"
                   >
-                    <input type="number" v-model="senderInput" />
+                    <input
+                      type="number"
+                      @focus="checkInout('senderInput', senderInput)"
+                      @input="enterInput('senderInput', senderInput)"
+                      @blur="checkInput('senderInput', senderInput)"
+                      v-model="senderInput"
+                    />
                     <div class="calculate_cender">
                       <div class="amount_name">
                         {{ select.datas.receive.unit }}
                       </div>
                       <img
                         :src="
-                          'src/assets/images/' +
+                          './src/assets/images/' +
                           select.datas.receive.icon +
                           '.svg'
                         "
@@ -170,7 +189,7 @@
                       </div>
                       <img
                         :src="
-                          'src/assets/images/' +
+                          './src/assets/images/' +
                           select.datas.sender.icon +
                           '.svg'
                         "
@@ -193,14 +212,22 @@
                   <div
                     class="input"
                     v-mask="'#### #### #### ####'"
-                    :class="plastCard ? 'input_active' : ''"
+                    :class="check.plastCard ? check.plastCard : ''"
                   >
-                    <input type="text" v-model="plastCard" />
+                    <input
+                      type="text"
+                      @focus="checkInout('plastCard', plastCard)"
+                      @input="enterInput('plastCard', plastCard)"
+                      @blur="checkInput('plastCard', plastCard)"
+                      v-model="plastCard"
+                    />
                     <div class="calculate_cender">
-                      <div class="amount_name">RUB</div>
-                      <img src="@/assets/images/sberbank_icon.svg" alt="" />
+                      <img src="@/assets/images/siberbank_blur_icon.png" alt="" />
                     </div>
                   </div>
+                  <span v-if="error.plastCard" class="error">
+                    {{ error.plastCard }}
+                  </span>
                 </div>
                 <div class="form_control input_receive kashelog">
                   <label>
@@ -208,14 +235,23 @@
                   </label>
                   <div
                     class="input disabled"
-                    :class="cashelog ? 'input_active' : ''"
+                    :class="check.cashelog ? check.cashelog : ''"
                   >
-                    <input type="text" v-model="cashelog" />
+                    <input
+                      type="text"
+                      @focus="checkInout('cashelog', cashelog)"
+                      @input="enterInput('cashelog', cashelog)"
+                      @blur="checkInput('cashelog', cashelog)"
+                      v-model="cashelog"
+                    />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
-                      <img src="@/assets/images/bitcoin_icon.svg" alt="" />
+                      <img src="@/assets/images/bitcoin_blur_icon.png" alt="" />
                     </div>
                   </div>
+                  <span v-if="error.cashelog" class="error">{{
+                    error.cashelog
+                  }}</span>
                 </div>
               </div>
 
@@ -226,14 +262,23 @@
                   </label>
                   <div
                     class="input disabled full_name"
-                    :class="fullName ? 'input_active' : ''"
+                    :class="check.fullName ? check.fullName : ''"
                   >
-                    <input type="text" v-model="fullName" />
+                    <input
+                      type="text"
+                      @focus="checkInout('fullName', fullName)"
+                      @input="enterInput('fullName', fullName)"
+                      @blur="checkInput('fullName', fullName)"
+                      v-model="fullName"
+                    />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
-                      <img src="@/assets/images/sberbank_icon.svg" alt="" />
+                      <img src="@/assets/images/siberbank_blur_icon.png" alt="" />
                     </div>
                   </div>
+                  <span v-if="error.fullName" class="error">{{
+                    error.fullName
+                  }}</span>
                 </div>
               </div>
 
@@ -246,13 +291,22 @@
                   </label>
                   <div
                     class="input email disabled"
-                    :class="email ? 'input_active' : ''"
+                    :class="check.email ? check.email : ''"
                   >
-                    <input type="email" v-model="email" />
+                    <input
+                      type="email"
+                      @focus="checkInout('email', email)"
+                      @input="enterInput('email', email)"
+                      @blur="checkInput('email', email)"
+                      v-model="email"
+                    />
                     <div class="calculate_cender">
                       <img src="@/assets/images/email_icon.png" alt="" />
                     </div>
                   </div>
+                  <span v-if="error.email" class="error">{{
+                    error.email
+                  }}</span>
                 </div>
                 <div class="form_control input_receive promokod_wrapper">
                   <label class="right">
@@ -263,9 +317,15 @@
                   </label>
                   <div
                     class="input disabled promokod"
-                    :class="promocod ? 'input_active' : ''"
+                    :class="check.promocod ? check.promocod : ''"
                   >
-                    <input type="number" v-model="promocod" />
+                    <input
+                      type="number"
+                      @focus="checkInout('promocod', promocod)"
+                      @input="enterInput('promocod', promocod)"
+                      @blur="checkInput('promocod', promocod)"
+                      v-model="promocod"
+                    />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
                       <!-- <img src="@/assets/images/bitcoin_icon.svg" alt="" /> -->
@@ -429,6 +489,8 @@ export default {
           unit: "GNT",
         },
       ],
+      searchReceive: "",
+      searchSender: "",
       rubleTo: true,
       select: {
         receive: 1,
@@ -463,6 +525,8 @@ export default {
       email: "",
       fullName: "",
       promocod: "",
+      error: {},
+      check: {},
     };
   },
   watch: {
@@ -508,6 +572,24 @@ export default {
     },
     closeConfirmModal() {
       this.confirmation = false;
+    },
+    checkInput(el, value) {
+      if (!value) {
+        this.error[el] = "Обязательное поле";
+        this.check[el] = "";
+      } else {
+        this.error[el] = "";
+      }
+    },
+    checkInout(el, value) {
+      if (value == "") {
+        this.check[el] = "focus_input";
+      }
+    },
+    enterInput(el, value) {
+      if (value != "") {
+        this.check[el] = "input_active";
+      }
     },
   },
 };
