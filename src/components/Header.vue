@@ -8,9 +8,9 @@
 
         <div class="header_menu">
           <router-link class="menu_link" to="/">Обменник</router-link>
-          <router-link class="menu_link" :class="$route.name == 'rules' ? 'menu_link_active' : ''" to="/rules">Правила обмена</router-link>
-          <router-link class="menu_link" :class="$route.name == 'faq' ? 'menu_link_active' : ''" to="/faq">FAQ</router-link>
-          <router-link class="menu_link" :class="$route.name == 'contact' ? 'menu_link_active' : ''" to="/contact">Контакты</router-link>
+          <router-link class="menu_link" :class="$route.name == 'rules' ? 'menu_link_active' : ''" :to="{name: 'rules'}">Правила обмена</router-link>
+          <router-link class="menu_link" :class="$route.name == 'faq' ? 'menu_link_active' : ''" :to="{name: 'faq'}">FAQ</router-link>
+          <router-link class="menu_link" :class="$route.name == 'contact' ? 'menu_link_active' : ''" :to="{name: 'contact'}">Контакты</router-link>
         </div>
       </div>
     </div>
