@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 body {
     background: #02020D;
     color: white;
@@ -20,6 +26,16 @@ main {
     max-width: 1510px;
     padding: 0 50px;
     margin: 0 auto;
+}
+
+.error {
+    color: #FF704D;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-top: 4px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -197,23 +213,23 @@ header {
             display: flex;
             align-items: center;
             margin-bottom: 100px;
+            gap: 24px;
 
-            img {
-                margin-right: 24px;
-            }
-
-            .hover {
-                display: none;
+            .img {
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 40px;
+                background: var(--brand, #6552FE);
             }
 
 
             &:hover {
-                .default {
-                    display: none;
-                }
-
-                .hover {
-                    display: block;
+                .img {
+                    border-radius: 40px;
+                    background: #4F3FCB;
                 }
             }
         }
@@ -281,6 +297,28 @@ header {
                             background: transparent;
                             border: none;
                             outline: none;
+                        }
+                    }
+
+                    .focus_input {
+                        border: 1px solid #FFF;
+                        background: rgba(255, 255, 255, 0.05);
+
+                        input {
+                            color: white;
+                        }
+                    }
+
+                    .input_active {
+                        background: #FFF;
+
+                        input {
+                            color: var(--text-02020-d, #02020D);
+                            font-family: "Poppins", sans-serif;
+                            font-size: 18px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
                         }
                     }
 
@@ -453,6 +491,13 @@ header {
                                     font-weight: 400;
                                     line-height: normal;
                                     gap: 12px;
+                                    opacity: 1 !important;
+
+                                    img {
+                                        width: 32px;
+                                        height: 32px;
+                                        opacity: 1 !important;
+                                    }
                                 }
                             }
 
@@ -480,6 +525,14 @@ header {
                             .input_active {
                                 background: #FFF !important;
                                 border: none;
+                            }
+
+                            .focus_input {
+                                border: 1px solid white !important;
+
+                                input {
+                                    color: white;
+                                }
                             }
                         }
 
@@ -737,7 +790,7 @@ header {
 
                 .img {
                     border-radius: 40px;
-                    background: var(--cccccc, #CCC);
+                    background: #4F3FCB;
                 }
             }
         }
@@ -1082,6 +1135,29 @@ header {
             }
         }
     }
+}
+
+.payment_header {
+    margin-bottom: 30px;
+
+    .content {
+        border-radius: 16px;
+        border: 1px solid var(--stroke-5-e-5-e-65, #5E5E65);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(7.5px);
+    }
+}
+
+.contact {
+    // scss code here
+}
+
+.faq {
+    // scss code here`
+}
+
+.rules {
+    // scss code here
 }
 
 footer {
