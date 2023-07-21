@@ -1,0 +1,25 @@
+<template>
+  <img src="@/assets/images/Loader.svg" alt="" class="loader" />
+  <h2>Ожидание оплаты заявки</h2>
+  <div class="copy_title">Сумма к оплате:</div>
+  <div class="copy_value">
+    <span>400 RUB</span>
+    <img src="@/assets/images/copy.svg" alt="" />
+  </div>
+  <div class="plast_card_title">Номер карты к оплате:</div>
+  <div class="plast_card_value">
+    <span>7124 9124 1814 9421</span>
+    <img src="@/assets/images/copy.svg" alt="" />
+  </div>
+  <div class="description">
+    После отправки средства не всегда поступают мгновенно. Зачисление средств на
+    наш счёт может занять некоторое время.
+  </div>
+</template>
+
+<script>
+import PaymentHeader from "../../components/PaymentHeader.vue";
+export default {
+  components: { PaymentHeader },
+};
+</script>
