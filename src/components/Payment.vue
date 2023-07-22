@@ -11,12 +11,12 @@
           <div class="sender">
             <div class="title">Отдаете</div>
             <div class="money">
-              <span>400 RUB</span>
+              <span>{{ $store.state.sender.amount }} {{ $store.state.sender.unit }}</span>
               <img src="@/assets/images/sberbank_icon.svg" alt="" />
             </div>
             <div class="rekvisit_title">Ваши реквизиты:</div>
-            <div class="rekvisit_amount">2145 5125 7532 4215</div>
-            <div class="rekvisit_name">Иванов Иван Иванович</div>
+            <div class="rekvisit_amount">{{ $store.state.sender.card }}</div>
+            <div class="rekvisit_name">{{ $store.state.sender.userName }}</div>
           </div>
 
           <img
@@ -28,12 +28,12 @@
           <div class="receiver">
             <div class="title">Получаете</div>
             <div class="money">
-              <span>0.00013321 BTC</span>
+              <span>{{ $store.state.receiver.amount }} {{ $store.state.receiver.unit }}</span>
               <img src="@/assets/images/bitcoin_icon.svg" alt="" />
             </div>
             <div class="kachelog_title">На кошелек:</div>
             <div class="kachelog_amount">
-              Tjdxd348TWgdB77VJsQWeTMwhi9WtmHrhS
+              {{ $store.state.receiver.cashelog }}
             </div>
           </div>
         </div>
