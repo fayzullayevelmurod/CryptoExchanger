@@ -162,11 +162,7 @@
                         {{ select.datas.receive.unit }}
                       </div>
                       <img
-                        :src="
-                          './src/assets/images/' +
-                          select.datas.receive.icon +
-                          '.svg'
-                        "
+                        :src="`./assets/images/${select.datas.receive.icon}.svg`"
                         alt=""
                       />
                     </div>

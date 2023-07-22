@@ -44,8 +44,8 @@
               <div class="right">
                 <div class="title">Номер карты:</div>
                 <div class="value">
-                  <span>{{ $store.state.sender.card }}</span>
-                  <Copy :copyText="$store.state.sender.card" />
+                  <span>7124 9124 1814 9421</span>
+                  <Copy copyText="7124912418149421" />
                 </div>
               </div>
             </div>

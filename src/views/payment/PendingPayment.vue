@@ -8,8 +8,8 @@
   </div>
   <div class="plast_card_title">Номер карты к оплате:</div>
   <div class="plast_card_value">
-    <span>{{ $store.state.sender.card }}</span>
-    <Copy :copyText="$store.state.sender.card" />
+    <span>7124 9124 1814 9421</span>
+    <Copy copyText="7124912418149421" />
   </div>
   <div class="description">
     После отправки средства не всегда поступают мгновенно. Зачисление средств на
