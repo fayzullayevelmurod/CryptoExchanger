@@ -320,7 +320,7 @@
                     :class="check.promocod ? check.promocod : ''"
                   >
                     <input
-                      type="number"
+                      type="text"
                       @focus="checkInout('promocod', promocod)"
                       @input="enterInput('promocod', promocod)"
                       @blur="checkInput('promocod', promocod)"
@@ -354,7 +354,7 @@
                 </label>
               </div>
 
-              <button @click="confirmation = true" class="submit">
+              <button @click="confirmationModal()" class="submit">
                 Перейти к оплате
               </button>
             </div>
@@ -397,6 +397,8 @@
     />
     <ApplicationConfirmation
       v-if="confirmation"
+      :sender="datas.sender"
+      :receiver="datas.receiver"
       @closeConfirmModal="closeConfirmModal()"
     />
   </main>
@@ -527,6 +529,7 @@ export default {
       promocod: "",
       error: {},
       check: {},
+      datas: {},
     };
   },
   watch: {
@@ -591,6 +594,45 @@ export default {
         this.check[el] = "input_active";
       }
     },
+    confirmationModal () {
+      this.confirmation = true;
+      console.log(this.select.datas);
+
+      if (this.select.datas.receive.unit == "RUB") {
+        let data = {
+          sender: {
+            amount: this.senderInput,
+            card: this.plastCard,
+            userName: this.fullName,
+            unit: this.select.datas.receive.unit,
+          },
+          receiver: {
+            name: this.select.datas.sender.name,
+            amount: this.receiverInput,
+            cashelog: this.cashelog,
+            unit: this.select.datas.sender.unit,
+          }
+        }
+        this.datas = data;
+      } else {
+        let data = {
+          sender: {
+            amount: this.receiverInput,
+            card: this.plastCard,
+            userName: this.fullName,
+            unit: this.select.datas.sender.unit,
+          },
+          receiver: {
+            name: this.select.datas.receive.name,
+            amount: this.senderInput,
+            cashelog: this.cashelog,
+            unit: this.select.datas.receive.unit,
+          }
+        }
+        this.datas = data;
+      }
+      console.log(this.datas)
+    }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <payment-header />
   <div class="application_payment">
-  <img src="@/assets/images/payment_bg.png" alt="" class="payment_bg">
+    <img src="@/assets/images/payment_bg.png" alt="" class="payment_bg" />
     <div class="main_container">
       <div class="content">
         <div class="content_head">
@@ -37,15 +37,15 @@
               <div class="left">
                 <div class="title">Сумма к оплате:</div>
                 <div class="value">
-                  <span>400 RUB</span>
-                  <img src="@/assets/images/copy.svg" alt="" />
+                  <span>{{$store.state.sender.amount}} {{ $store.state.sender.unit }}</span>
+                  <Copy :copyText="$store.state.sender.amount" />
                 </div>
               </div>
               <div class="right">
                 <div class="title">Номер карты:</div>
                 <div class="value">
-                  <span>7124 9124 1814 9421</span>
-                  <img src="@/assets/images/copy.svg" alt="" />
+                  <span>{{ $store.state.sender.card }}</span>
+                  <Copy :copyText="$store.state.sender.card" />
                 </div>
               </div>
             </div>
@@ -83,8 +83,8 @@
           </div>
         </div>
         <div class="content_foot">
-            <button class="send">Я оплатил</button>
-            <div class="cancel">Отмена</div>
+          <button class="send" @click="$router.push({name: 'payment-pending'})">Я оплатил</button>
+          <div class="cancel" @click="$router.push({name: 'home'})">Отмена</div>
         </div>
       </div>
     </div>
@@ -93,9 +93,10 @@
 
 <script>
 import PaymentHeader from "../../components/PaymentHeader.vue";
+import Copy from "../../components/Copy.vue";
 
 export default {
-  components: { PaymentHeader },
+  components: { PaymentHeader, Copy },
   data() {
     return {
       defaultTime: 1200,

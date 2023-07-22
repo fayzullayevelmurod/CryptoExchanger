@@ -24,6 +24,10 @@ main {
     overflow: hidden;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .main_container {
     max-width: 1510px;
     padding: 0 50px;
@@ -38,6 +42,10 @@ main {
     font-weight: 400;
     line-height: 120%;
     margin-top: 4px;
+}
+
+.d-none {
+    display: none;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -527,7 +535,7 @@ header {
                                 input {
                                     width: 100%;
                                     padding: 12px 16px;
-                                    color: var(--subtext-999999, #999);
+                                    color: #02020D;
                                     font-family: "Poppins", sans-serif;
                                     font-size: 18px;
                                     font-style: normal;
@@ -596,7 +604,7 @@ header {
                                 .calculate_cender {
                                     img {
                                         mix-blend-mode: luminosity;
-                                        opacity: 0.5;
+                                        opacity: 0.5 !important;
                                     }
                                 }
                             }
@@ -886,12 +894,17 @@ header {
                     width: 100%;
                     padding: 12px 16px;
                     resize: none;
-                    color: var(--text-02020-d, #02020D);
+                    color: #02020D;
                     font-family: "Poppins", sans-serif;
                     font-size: 18px;
                     font-style: normal;
                     font-weight: 400;
                     line-height: normal;
+
+                    &:focus {
+                        color: white;
+                        border-color: white;
+                    }
                 }
 
                 textarea {
@@ -901,7 +914,9 @@ header {
                 .active_input {
                     background: #FFF;
                     border: none;
+                    color: #02020D !important;
                 }
+
             }
         }
 
@@ -1748,6 +1763,15 @@ header {
     }
 }
 
+.loader {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .contact {
 
     // position: relative;
@@ -1900,12 +1924,20 @@ header {
             font-weight: 600;
             line-height: 150%;
         }
+
+        img {
+            transition:  .4s ease all;
+        }
+
+        .active_image {
+            transform: rotateZ(180deg);
+        }
     }
 
     .text {
         color: #FFF;
         font-family: "Poppins", sans-serif;
-        font-size: 16px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 400;
         line-height: 120%;
