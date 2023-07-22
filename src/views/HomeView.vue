@@ -162,7 +162,7 @@
                         {{ select.datas.receive.unit }}
                       </div>
                       <img
-                        :src="`./assets/images/${select.datas.receive.icon}.svg`"
+                        :src="getPhotoUrl(select.datas.receive.icon)"
                         alt=""
                       />
                     </div>
@@ -546,6 +546,9 @@ export default {
     },
   },
   methods: {
+    getPhotoUrl (img) {
+      return `./assets/images/${img}.svg`;
+    },
     changeCalculation() {
       this.changed = true;
       let receiver = this.select.datas.receive;
