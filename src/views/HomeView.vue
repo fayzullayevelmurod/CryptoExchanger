@@ -162,13 +162,13 @@
                         {{ select.datas.receive.unit }}
                       </div>
                       <img
-                        :src="getPhotoUrl(select.datas.receive.icon)"
+                        :src="'src/assets/images/'+select.datas.receive.icon+'.svg'"
                         alt=""
                       />
                     </div>
                   </div>
                 </div>
-                <div class="form_control input_receive">
+                <div class="form_control input_receive receive_top">
                   <label>
                     <span class="min"
                       >Резервы: {{ select.datas.sender.amount }}</span

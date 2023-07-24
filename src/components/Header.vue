@@ -7,6 +7,7 @@
         </router-link>
 
         <div class="header_menu">
+          <img src="@/assets/images/burger_menu_icon.svg">
           <a v-if="$route.name == 'home'" class="menu_link" href="#calculation">Обменник</a>
           <router-link v-else class="menu_link" to="/">Обменник</router-link>
           <router-link class="menu_link" :class="$route.name == 'rules' ? 'menu_link_active' : ''" :to="{name: 'rules'}">Правила обмена</router-link>
