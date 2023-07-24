@@ -1,0 +1,247 @@
+@media (max-width: 1400px) {
+  .main_container {
+    max-width: 1270px;
+  }
+  header .header_wrapper {
+    margin-bottom: 80px;
+  }
+  header .header_wrapper .logo img {
+    height: 44px;
+  }
+  header .header_wrapper .header_menu .menu_link {
+    font-size: 20px;
+  }
+  .index {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .index #home .index_bg_1 {
+    transform: scale(0.6) translate(-397px, -209px);
+  }
+  .index #home .index_bg_2 {
+    transform: translate(-168px, -117px);
+  }
+  .index #home .index_bg_3 {
+    transform: scale(0.6) translateX(121px) translateY(-241px);
+  }
+  .index #home .index_bg_4 {
+    transform: scale(0.9) translate(57px, -224px);
+  }
+  .index #home .home_top {
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+  .index #home .home_top .text {
+    font-size: 54px;
+  }
+  .index #home .home_top .img img {
+    height: 64px;
+  }
+  .index #home .home_top .img .star {
+    width: 24px;
+    height: 24px;
+  }
+  .index #home .home_body {
+    margin-bottom: 50px;
+    align-self: stretch;
+    align-items: inherit;
+  }
+  .index #home .home_body .card {
+    padding: 24px;
+  }
+  .index #home .home_body .card h3 {
+    font-size: 24px;
+    padding: 0 20px;
+  }
+  .index #home .home_footer {
+    font-size: 24px;
+  }
+  .index #home .home_footer .img {
+    height: 72px;
+    width: 72px;
+  }
+  .index #calculation .calculation_wrapper .amont_type {
+    width: calc(100% - 552px - 30px);
+  }
+  .index #calculation .calculation_wrapper .amont_type .type_item .title {
+    font-size: 20px;
+  }
+  .index #calculation .calculation_wrapper .calculate {
+    width: 552px;
+  }
+  .index #calculation .calculation_wrapper .calculate .head .head_title {
+    font-size: 20px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group .form_control {
+    width: 100%;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group .receive_top {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group .calculate_btn {
+    bottom: 97px;
+  }
+  .index #comment .body .card {
+    padding: 24px;
+  }
+  .index #comment .link {
+    font-size: 24px;
+  }
+  .index #comment .link .img {
+    height: 72px;
+    width: 72px;
+  }
+}
+@media (min-width: 1100px) {
+  header .header_wrapper .header_menu img {
+    display: none;
+  }
+}
+@media (max-width: 1100px) {
+  .main_container {
+    padding: 0 30px;
+  }
+  header .header_wrapper {
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+  header .header_wrapper .logo img {
+    height: 32px;
+  }
+  header .header_wrapper .header_menu .menu_link {
+    display: none;
+  }
+  .index #home .home_top {
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+  .index #home .home_top .text {
+    font-size: 40px;
+  }
+  .index #home .home_top .img img {
+    height: 46px;
+  }
+  .index #home .home_top .img .star {
+    height: 16px;
+    width: 16px;
+  }
+  .index #home .home_top .img_3 {
+    flex-basis: 130px;
+  }
+  .index #home .home_body {
+    margin-bottom: 40px;
+  }
+  .index #home .home_body .card {
+    padding: 20px;
+    gap: 16px;
+  }
+  .index #home .home_body .card img {
+    height: 48px;
+    width: 48px;
+    margin-top: 0;
+  }
+  .index #home .home_body .card h3 {
+    font-size: 20px;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .index #home .home_footer {
+    font-size: 20px;
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+  .index #home .home_footer .img {
+    width: 56px;
+    height: 56px;
+  }
+  .index #home .home_footer .img img {
+    width: 32px;
+    height: 32px;
+  }
+  .index #calculation .calculation_wrapper .amont_type {
+    display: none;
+  }
+  .index #calculation .calculation_wrapper .calculate {
+    width: 100%;
+  }
+  .index #calculation .calculation_wrapper .calculate .head .head_title {
+    font-size: 18px;
+  }
+  .index #calculation .calculation_wrapper .calculate .head .head_vlue {
+    font-size: 16px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content {
+    position: relative;
+    padding: 20px;
+    padding-top: 59px;
+    gap: 20px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .content_title {
+    width: calc(100% - 40px);
+    position: absolute;
+    display: flex;
+    gap: 64px;
+    justify-content: space-between;
+    align-items: center;
+    top: 20px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .content_title h3 {
+    width: 50%;
+    color: var(--ffffff, #FFF);
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group {
+    flex-direction: row;
+    gap: 64px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group .sender_top {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group .receive_top {
+    gap: 12px;
+  }
+  .index #calculation .calculation_wrapper .calculate .content .input_group .form_control .input {
+    height: 52px;
+  }
+  .contact .contact_title h2 {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+  }
+  .contact .contact_main .contact_main_left {
+    padding: 20px;
+  }
+  .contact .contact_main .contact_main_left .contact_block {
+    gap: 20px;
+  }
+  .contact .contact_main .contact_main_left .contact_block .contact_block_text span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+  }
+  .contact .contact_main .contact_main_left .contact_block .contact_block_text a {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration-line: underline;
+  }
+  .contact .contact_main .contact_main_right .contact_block .contact_block_text p {
+    margin-left: 12px;
+    margin-top: 0;
+  }
+}/*# sourceMappingURL=responsive.css.map */

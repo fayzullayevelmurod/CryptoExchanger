@@ -322,4 +322,94 @@
             }
         }
     }
+    .contact{
+        .contact_title{
+            h2{
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 110%;
+            }
+        }
+        .contact_main{
+            display: flex;
+            flex-direction: column;
+            .contact_main_left{
+                padding: 20px;
+                .contact_block{
+                    gap: 20px;
+                    .contact_block_text{
+                        span{
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 120%;
+                        }
+                        a{
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 120%;
+                            text-decoration-line: underline;
+                        }
+                    }
+                }
+            }
+            .contact_main_right{
+                .contact_block{
+                    display: flex;
+
+                    .contact_block_text{
+                        p{
+                            margin-left: 12px;
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px){
+    .main_container {
+        padding: 0 15px;
+    }
+    .contact{
+        .contact_title{
+            text-align: center;
+            h2{
+                margin-bottom: 30px;
+            }
+        }
+        .contact_main{
+            padding-bottom: 60px;
+            gap: 15px;
+            .contact_main_left{
+                padding: 15px;
+                gap: 15px;
+                .contact_block{
+                    gap: 10px;
+                    .contact_block_text{
+                        span{
+                        }
+                        a{
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+            .contact_main_right{
+                padding: 15px;
+                .contact_block{
+                    gap: 10px;
+                    .contact_block_text{
+                        p{
+                            font-size: 16px;
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1773,8 +1773,7 @@ header {
 }
 
 .contact {
-
-    // position: relative;
+    position: relative;
     // scss code here
     .contact_title {
         h2 {
@@ -1788,12 +1787,10 @@ header {
             margin-bottom: 50px;
         }
     }
-
     .contact_main {
         display: flex;
         gap: 30px;
-        margin-bottom: 479px;
-
+        padding-bottom: 479px;
         .contact_main_left {
             display: flex;
             gap: 24px;
@@ -1803,11 +1800,9 @@ header {
             border-radius: 16px;
             border: 1px solid var(--stroke-5-e-5-e-65, #5E5E65);
             background: rgba(255, 255, 255, 0.15);
-
             .contact_block {
-                gap: 16px;
+                gap: 12px;
                 display: flex;
-
                 span {
                     color: #FFF;
                     font-family: 'Poppins', sans-serif;
@@ -1817,9 +1812,8 @@ header {
                     line-height: 120%;
                     /* 21.6px */
                 }
-
                 a {
-                    margin-left: 10px;
+                    // margin-left: 10px;
                     color: var(--brand, #6552FE);
                     font-family: 'Poppins', sans-serif;
                     font-size: 18px;
@@ -1830,14 +1824,12 @@ header {
                 }
             }
         }
-
         .contact_main_right {
             flex: 1;
             padding: 30px;
             border-radius: 16px;
             border: 1px solid var(--stroke-5-e-5-e-65, #5E5E65);
             background: rgba(255, 255, 255, 0.15);
-
             .contact_block {
                 p {
                     max-width: 391px;
@@ -1858,6 +1850,7 @@ header {
         position: absolute;
         bottom: 0;
         right: 0;
+        z-index: -1;
     }
 }
 
