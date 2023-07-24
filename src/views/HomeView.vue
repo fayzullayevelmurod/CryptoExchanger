@@ -4,6 +4,7 @@
       <img src="@/assets/images/index_bg_1.png" alt="" class="index_bg_1" />
       <img src="@/assets/images/index_bg_2.png" alt="" class="index_bg_2" />
       <img src="@/assets/images/index_bg_3.png" alt="" class="index_bg_3" />
+      <img src="@/assets/images/index_bg_3_mobile.png" alt="" class="index_bg_3_mobile">
       <img src="@/assets/images/index_bg_4.png" alt="" class="index_bg_4" />
 
       <div class="main_container">
@@ -60,8 +61,8 @@
     <section id="calculation">
       <div class="main_container">
         <div class="calculation_wrapper">
-          <div class="amont_type">
-            <div class="type_item sender">
+          <div class="amont_type" :class="amount_type ? 'mobile_amont_type' : ''">
+            <div class="type_item sender" :class="mobile_sender_item">
               <div class="title">Отдаете</div>
               <div
                 class="search"
@@ -82,7 +83,7 @@
               <div class="buttons">
                 <button
                   v-for="i in 9"
-                  @click="select.sender = i"
+                  @click="changeSelectSender(i)"
                   :key="i"
                   :class="i == select.sender ? 'active' : ''"
                 >
@@ -92,8 +93,11 @@
                   Сбербанк
                 </button>
               </div>
+              <button @click="closeMobileAmount()" class="close_amount">
+                Закрыть
+              </button>
             </div>
-            <div class="type_item receive">
+            <div class="type_item receive" :class="mobile_receive_item">
               <div class="title">Получаете</div>
               <div
                 class="search"
@@ -128,6 +132,10 @@
                   </div>
                 </button>
               </div>
+
+              <button @click="closeMobileAmount()" class="close_amount">
+                Закрыть
+              </button>
             </div>
           </div>
 
@@ -141,11 +149,11 @@
             </div>
             <div class="content">
               <div class="content_title">
-                <h3>Отдаете</h3>
-                <h3>Получаете</h3>
+                <h3 class="first">Отдаете</h3>
+                <h3 class="second">Получаете</h3>
               </div>
               <div class="input_group">
-                <div class="form_control input_sender sender_top">
+                <div class="form_control input_sender form_control_top sender_top calculate_mobile_1">
                   <label>
                     <span class="min">Min: 700 RUB</span>
                     <span class="max">Max: 500000 RUB</span>
@@ -161,7 +169,7 @@
                       @blur="checkInput('senderInput', senderInput)"
                       v-model="senderInput"
                     />
-                    <div class="calculate_cender">
+                    <div class="calculate_cender" @click="mobileAmount(select.datas.receive.unit)">
                       <div class="amount_name">
                         {{ select.datas.receive.unit }}
                       </div>
@@ -172,7 +180,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form_control input_receive receive_top">
+                <div class="form_control input_receive form_control_top receive_top calculate_mobile_5">
                   <label>
                     <span class="min"
                       >Резервы: {{ select.datas.sender.amount }}</span
@@ -183,7 +191,7 @@
                     :class="receiverInput ? 'input_active' : ''"
                   >
                     <input type="number" disabled v-model="receiverInput" />
-                    <div class="calculate_cender">
+                    <div class="calculate_cender" @click="mobileAmount(select.datas.sender.unit)">
                       <div class="amount_name">
                         {{ select.datas.sender.unit }}
                       </div>
@@ -198,13 +206,13 @@
                     </div>
                   </div>
                 </div>
-                <button @click="changeCalculation()" class="calculate_btn">
+                <button @click="changeCalculation()" class="calculate_btn calculate_mobile_4">
                   <img src="@/assets/images/calculate_icon.svg" alt="" />
                 </button>
               </div>
 
               <div class="input_group warning">
-                <div class="form_control input_sender">
+                <div class="form_control input_sender calculate_mobile_2">
                   <label>
                     <span class="min">Номер карты отправителя</span>
                     <img src="@/assets/images/answer_icon.svg" alt="" />
@@ -229,7 +237,7 @@
                     {{ error.plastCard }}
                   </span>
                 </div>
-                <div class="form_control input_receive kashelog">
+                <div class="form_control input_receive kashelog  calculate_mobile_6">
                   <label>
                     <span class="min">Bitcoin кошелёк получателя</span>
                   </label>
@@ -256,7 +264,7 @@
               </div>
 
               <div class="input_group warning">
-                <div class="form_control fio input_sender">
+                <div class="form_control fio input_sender calculate_mobile_3">
                   <label>
                     <span class="min">ФИО отправителя</span>
                   </label>
@@ -282,10 +290,10 @@
                 </div>
               </div>
 
-              <div class="line"></div>
+              <div class="line calculate_mobile_7"></div>
 
               <div class="input_group warning">
-                <div class="form_control input_sender">
+                <div class="form_control input_sender calculate_mobile_8">
                   <label>
                     <span class="min">Ваш E-mail</span>
                   </label>
@@ -308,7 +316,7 @@
                     error.email
                   }}</span>
                 </div>
-                <div class="form_control input_receive promokod_wrapper">
+                <div class="form_control input_receive promokod_wrapper calculate_mobile_9">
                   <label class="right">
                     <span class="min">
                       Промокод, необязательно
@@ -334,7 +342,7 @@
                 </div>
               </div>
 
-              <div class="check">
+              <div class="check calculate_mobile_10">
                 <input type="checkbox" id="remainder" />
                 <label
                   @click="radioCheck = !radioCheck"
@@ -354,7 +362,7 @@
                 </label>
               </div>
 
-              <button @click="confirmationModal()" class="submit">
+              <button @click="confirmationModal()" class="submit calculate_mobile_11">
                 Перейти к оплате
               </button>
             </div>
@@ -530,6 +538,9 @@ export default {
       error: {},
       check: {},
       datas: {},
+      amount_type: false,
+      mobile_sender_item: "",
+      mobile_receive_item: "",
     };
   },
   watch: {
@@ -570,8 +581,12 @@ export default {
       } else {
         this.select.datas.receive = data;
       }
-      console.log(data);
       this.select.datas.toRubleAmount = data.toRuble;
+      this.closeMobileAmount();
+    },
+    changeSelectSender (i) {
+      this.select.sender = i;
+      this.closeMobileAmount()
     },
     closeCommentModal() {
       this.commentModal = false;
@@ -635,6 +650,25 @@ export default {
         this.datas = data;
       }
       console.log(this.datas)
+    },
+    mobileAmount (unit) {
+      if (unit == "RUB") {
+        this.amount_type = true;
+        this.mobile_sender_item = "mobil_amount_item";
+        this.mobile_receive_item = "";
+      } else {
+        this.amount_type = true;
+        this.mobile_receive_item = "mobil_amount_item";
+        this.mobile_sender_item = "";
+      }
+
+      document.querySelector('body').style.overflow = "hidden";
+    },
+    closeMobileAmount () {
+      this.amount_type = false;
+      this.mobile_sender_item = "";
+      this.mobile_receive_item = "";
+      document.querySelector('body').style.overflow = "auto";
     }
   },
 };
