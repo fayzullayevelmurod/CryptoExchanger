@@ -150,7 +150,7 @@
             }
         }
     }
-} 
+}
 
 @media (min-width: 1100px) {
     header {
@@ -179,6 +179,7 @@
                     height: 32px;
                 }
             }
+
             .header_menu {
                 .menu_link {
                     display: none;
@@ -191,7 +192,7 @@
         #home {
             .home_top {
                 margin-bottom: 40px;
-                gap: 24px;
+                gap: 16px;
 
                 .text {
                     font-size: 40px;
@@ -230,6 +231,92 @@
                         font-size: 20px;
                         padding: 0;
                         margin-bottom: 0;
+                    }
+                }
+            }
+
+            .home_footer {
+                font-size: 20px;
+                gap: 16px;
+                margin-bottom: 80px;
+
+                .img {
+                    width: 56px;
+                    height: 56px;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+
+        #calculation {
+            .calculation_wrapper {
+                .amont_type {
+                    display: none;
+                }
+
+                .calculate {
+                    width: 100%;
+
+                    .head {
+                        .head_title {
+                            font-size: 18px;
+                        }
+
+                        .head_vlue {
+                            font-size: 16px;
+                        }
+                    }
+
+                    .content {
+                        position: relative;
+                        padding: 20px;
+                        padding-top: 59px;
+                        gap: 20px;
+
+                        .content_title {
+                            width: calc(100% - 40px);
+                            position: absolute;
+                            display: flex;
+                            gap: 64px;
+                            justify-content: space-between;
+                            align-items: center;
+                            top: 20px;
+
+                            h3 {
+                                width: 50%;
+                                color: var(--ffffff, #FFF);
+                                font-family: "Poppins", sans-serif;
+                                font-size: 18px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: 150%;
+                            }
+                        }
+
+                        .input_group {
+                            flex-direction: row;
+                            gap: 64px;
+
+                            .sender_top {
+                                display: flex;
+                                flex-direction: column-reverse;
+                                gap: 12px;
+                            }
+
+                            .receive_top {
+                                gap: 12px;
+                            }
+
+                            .form_control {
+                                .input {
+                                    height: 52px;
+                                }
+                            }
+                        }
                     }
                 }
             }

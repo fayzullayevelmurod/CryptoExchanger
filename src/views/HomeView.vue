@@ -140,8 +140,12 @@
               </div>
             </div>
             <div class="content">
+              <div class="content_title">
+                <h3>Отдаете</h3>
+                <h3>Получаете</h3>
+              </div>
               <div class="input_group">
-                <div class="form_control input_sender">
+                <div class="form_control input_sender sender_top">
                   <label>
                     <span class="min">Min: 700 RUB</span>
                     <span class="max">Max: 500000 RUB</span>
