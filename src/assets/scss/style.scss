@@ -2040,3 +2040,9 @@ footer {
         right: 0;
     }
 }
+
+@media (max-width: 1000px) {
+    .show_pages {
+        right: 50px;
+    }
+}
