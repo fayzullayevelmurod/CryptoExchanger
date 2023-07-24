@@ -27,7 +27,7 @@
             <div class="contact_block_icon">
               <img src="@/assets/images/contact_icon_Message.svg" alt="">
             </div>
-            <div class="contact_block_text">
+            <div class="contact_block_text left_text">
               <span>Поддержка по почте:</span>
               <a href="#">CryptoExchanger@gmail.com</a>
             </div>
