@@ -160,6 +160,118 @@
             }
         }
     }
+
+    .payment_header {
+        .content {
+            .line_1 {
+                width: 35%;
+            }
+
+            .line_2 {
+                width: 77%;
+            }
+        }
+    }
+
+    .pending_payment {
+        .content {
+            .left {
+                h1 {
+                    font-size: 24px;
+                }
+
+                .sender {
+                    .money {
+                        span {
+                            font-size: 24px;
+                        }
+                    }
+                }
+                
+                .receiver {
+                    .money {
+                        span {
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+
+            .right {
+                h2 {
+                    font-size: 20px;
+                }
+
+                .copy_value {
+                    span {
+                        font-size: 24px;
+                    }
+                }
+
+                .plast_card_value {
+                    span {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .application_payment {
+        .content {
+            .content_head {
+                .title {
+                    h1 {
+                        font-size: 20px;
+                    }
+
+                    .id {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .content_body {
+                .content_item {
+                    .item_head {
+                        .number {
+                            font-size: 20px;
+                        }
+
+                        h3 {
+                            font-size: 20px;
+                        }
+                    }
+
+                    .copy {
+                        .left {
+                            .value {
+                                font-size: 24px;
+                            }
+                        }
+
+                        .right {
+                            .value {
+                                font-size: 24px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .accardion {
+        button {
+            span {
+                font-size: 20px;
+            }
+        }
+
+        .text {
+            font-size: 16px;
+        }
+    }
 }
 
 @media (min-width: 1100px) {
@@ -197,6 +309,10 @@
                 }
             }
         }
+    }
+
+    .accardion {
+
     }
 }
 
@@ -625,12 +741,331 @@
     .confirmation {
         .content {
             width: calc(100% - 60px);
+
+            .content_head {
+                padding: 20px;
+
+                h1 {
+                    font-size: 18px;
+                }
+            }
+
+            .content_body {
+                padding: 20px;
+                gap: 15px;
+
+                .title {
+                    font-size: 16px;
+                }
+
+                .card {
+                    .card_item {
+                        width: calc(50% - 31px);
+                        padding: 16px;
+
+                        h2 {
+                            font-size: 18px;
+                        }
+
+                        .amount {
+                            .text {
+                                font-size: 16px;
+                            }
+                        }
+
+                        .information {
+                            .information_title {
+                                font-size: 16px;
+                            }
+
+                            .plast_card {
+                                font-size: 16px;
+                            }
+
+                            .full_name {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+
+                    .icon {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+
+            .content_foot {
+                padding: 20px;
+                padding-top: 10px;
+
+                .sender {
+                    font-size: 16px;
+                }
+
+                .cancel {
+                    font-size: 16px;
+                }
+            }
         }
     }
 
     footer {
         .text {
             font-size: 14px;
+        }
+    }
+
+    .application_payment {
+        .content {
+            padding: 20px;
+
+            .content_head {
+                margin-bottom: 30px;
+
+                .title {
+                    margin-bottom: 20px;
+
+                    h1 {
+                        font-size: 18px;
+                    }
+
+                    .id {
+                        font-size: 18px;
+                    }
+                }
+
+                .timer {
+                    padding: 15px;
+
+                    .value {
+                        .text_wrapper {
+
+                            .time,
+                            .text {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .content_body {
+                .content_item {
+                    .item_head {
+                        gap: 15px;
+                        margin-bottom: 20px;
+
+                        .number {
+                            width: 45px;
+                            height: 45px;
+                            font-size: 18px;
+                        }
+
+                        h3 {
+                            font-size: 18px;
+                        }
+                    }
+
+                    .copy {
+                        transform: translateX(-21px);
+                        padding: 20px;
+                        gap: 20px;
+                        width: calc(100% + 42px);
+                        border-radius: 0;
+                        margin-bottom: 30px;
+
+                        .left {
+                            .title {
+                                font-size: 16px;
+                            }
+
+                            .value {
+                                font-size: 20px;
+                            }
+                        }
+
+                        .right {
+                            .title {
+                                font-size: 16px;
+                            }
+
+                            .value {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .text {
+                        font-size: 16px;
+                        padding: 0;
+                        margin-bottom: 30px;
+                    }
+                }
+
+                .warning {
+                    padding: 15px;
+                    gap: 15px;
+                    margin-bottom: 30px;
+
+                    .img {
+                        width: 48px;
+                        height: 48px;
+                    }
+
+                    .text {
+                        width: calc(100% - 48px - 15px);
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .content_foot {
+                button {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .pending_payment {
+        .content {
+            flex-direction: column;
+            margin-bottom: 80px;
+
+            .left {
+                width: 100%;
+                padding: 20px;
+                position: relative;
+
+                h1 {
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .id {
+                    position: absolute;
+                    right: 20px;
+                    top: 20px;
+                    font-size: 16px;
+                }
+
+                .card {
+                    display: flex;
+                    gap: 30px;
+                    width: 100%;
+
+                    .card_item {
+                        width: calc(50% - 46px);
+                        margin: 0;
+
+                        .title {
+                            font-size: 16px;
+                        }
+
+                        .money {
+                            span {
+                                font-size: 20px;
+                            }
+
+                            margin-bottom: 6px;
+                        }
+
+                        .title_2 {
+                            font-size: 16px;
+                        }
+
+                        .amount {
+                            font-size: 16px;
+                        }
+
+                        .rekvisit_name {
+                            font-size: 16px;
+                        }
+                    }
+
+                    .bottom_icon {
+                        transform: rotateZ(-90deg);
+                    }
+                }
+            }
+
+            .right {
+                width: 100%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                .right_content {
+                    h2 {
+                        font-size: 18px;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                    }
+
+                    .copy_title , .plast_card_title {
+                        font-size: 16px;
+                        margin-bottom: 6px;
+                    }
+
+                    .copy_value, .plast_card_value {
+                        margin-bottom: 20px;
+
+                        span {
+                            font-size: 20px;
+                        }
+                    }
+
+                    .description {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    .accardion {
+        padding: 20px;
+
+        button {
+            span {
+                font-size: 18px;
+                text-align: left;
+            }
+        }
+
+        .text {
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .open {
+            margin-top: 15px;
+        }
+    }
+
+    .payment_header {
+        .content {
+            padding: 20px;
+
+            .payment_item {
+                font-size: 16px;
+            }
+
+            .line {
+                left: 20px;
+            }
+
+            .line_1 {
+                width: 30%;
+            }
+
+            .line_2 {
+                width: 65%;
+            }
+
+            .line_3 {
+                width: calc(100% - 40px);
+            }
         }
     }
 }
@@ -890,7 +1325,7 @@
                             .calculate_mobile_9 {
                                 position: absolute;
                                 top: 665px;
-                                
+
                                 label {
                                     font-size: 16px;
                                 }
@@ -949,6 +1384,224 @@
         }
     }
 
+    .confirmation {
+        .content {
+            width: calc(100% - 30px);
+
+            .content_head {
+                padding: 15px;
+
+                h1 {
+                    font-size: 18px;
+                }
+            }
+
+            .content_body {
+                padding: 15px;
+
+                .title {
+                    font-size: 16px;
+                    margin-bottom: 15px;
+                }
+
+                .card {
+                    flex-direction: column;
+                    gap: 10px;
+
+                    .card_item {
+                        width: 100%;
+                        padding: 15px;
+
+                        h2 {
+                            margin-bottom: 15px;
+                        }
+                    }
+
+                    .icon {
+                        transform: rotateZ(90deg);
+                    }
+                }
+            }
+
+            .content_foot {
+                padding: 15px;
+                padding-top: 0;
+            }
+        }
+    }
+
+    .comment_modal {
+        .content {
+            width: calc(100% - 30px);
+
+            .content_head {
+                padding: 15px;
+
+                h1 {
+                    font-size: 18px;
+                }
+            }
+
+            .content_body {
+                padding: 15px;
+                gap: 15px;
+
+                .form_group {
+                    gap: 3px;
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        font-size: 16px;
+                    }
+
+                    input,
+                    textarea {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .content_foot {
+                padding: 15px;
+                padding-top: 0;
+
+                button {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .payment_header {
+        margin-bottom: 20px;
+
+        .content {
+            padding: 15px;
+        }
+    }
+
+    .pending_payment {
+        .content {
+            .left {
+                padding: 15px;
+
+                h1 {
+                    margin-bottom: 5px;
+                }
+
+                .id {
+                    position: static;
+                    margin-bottom: 20px;
+                }
+
+                .card {
+                    flex-direction: column;
+                    gap: 15px;
+
+                    .bottom_icon {
+                        transform: rotateZ(0deg);
+                        width: 32px;
+                        height: 32px;
+                    }
+
+                    .receiver {
+                        .kachelog_amount {
+                            margin-bottom: 36px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .application_payment {
+        .content {
+            padding: 15px;
+
+            .content_head {
+                .timer {
+                    gap: 10px;
+                    position: relative;
+                    align-items: flex-end;
+                    padding-bottom: 40px;
+                    margin-bottom: 25px;
+
+                    .value {
+                        .text_wrapper {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 5px;
+                        }
+
+                        .time_line_wrapper {
+                            position: absolute;
+                            bottom: 15px;
+                            left: 15px;
+                            height: 10px;
+                            width: calc(100% - 30px);
+                        }
+                    }
+                }
+            }
+
+            .content_body {
+                .content_item {
+                    .item_head {
+                        margin-bottom: 20px;
+                        gap: 15px;
+
+                        .number {
+                            width: 45px;
+                            height: 45px;
+                            font-size: 18px;
+                        }
+
+                        h3 {
+                            font-size: 18px;
+                            width: calc(100% - 60px);
+                        }
+                    }
+
+                    .copy {
+                        flex-direction: column;
+                        transform: translateX(-16px);
+                        width: calc(100% + 32px);
+                        padding: 15px;
+                        gap: 20px;
+
+                        .left {
+                            width: 100%;
+                            margin-left: 0;
+                        }
+
+                        .right {
+                            width: 100%;
+                            margin-left: 0;
+                        }
+                    }
+
+                    .text {
+                        font-size: 16px;
+                        margin-bottom: 25px;
+                    }
+                }
+
+                .warning {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 15px;
+                    margin-bottom: 25px;
+
+                    .text {
+                        width: 100%;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
     footer {
         .main_container {
             flex-direction: column;
@@ -998,6 +1651,83 @@
                         width: 32px;
                         height: 32px;
                     }
+                }
+            }
+        }
+    }
+
+    .confirmation {
+        z-index: 7;
+
+        .content {
+            .content_foot {
+                flex-direction: column;
+                gap: 15px;
+
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .comment_modal {
+        .content {
+            .content_foot {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .payment_header {
+        .content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+
+            .payment_item {
+                font-size: 16px;
+            }
+
+            .line {
+                border-radius:  0px 10px 10px 0px;
+                background: var(--brand, #6552FE);
+                width: 3px;
+                height: auto;
+                left: 0;
+                top: 15px;
+            }
+
+            .line_1 {
+                height: 30%;
+            }
+
+            .line_2 {
+                height: 60%;
+            }
+
+            .line_3 {
+                height: calc(100% - 30px);
+            }
+        }
+    }
+
+    .application_payment {
+        .content {
+            .content_foot {
+                flex-direction: column;
+                gap: 15px;
+
+                .send,
+                .cancel {
+                    width: 100%;
+                    text-align: center;
                 }
             }
         }
