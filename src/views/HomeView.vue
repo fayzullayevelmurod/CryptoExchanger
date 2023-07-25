@@ -53,12 +53,12 @@
           </div>
         </div>
 
-        <button class="home_footer">
+        <a href="#calculation" style="text-decoration: none;" class="home_footer">
           <div class="img">
             <img src="@/assets/images/arrow_bottom_icon.svg" alt="" />
           </div>
           Перейти к обменнику
-        </button>
+        </a>
       </div>
     </section>
 
