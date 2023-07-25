@@ -2004,7 +2004,11 @@ header {
     }
 }
 
-.tools_active {
+.tools_active1 {
+    transform: translateY(-65px) translateX(65px);
+}
+
+.tools_active1, .tools_active2 {
     display: block;
 }
 
