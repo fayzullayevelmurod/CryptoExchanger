@@ -218,11 +218,12 @@
                     <img src="@/assets/images/answer_icon.svg" alt="" />
                   </label>
                   <div
-                    class="input"
-                    
+                    class="input"                    
                     :class="check.plastCard ? check.plastCard : ''"
                   >
                     <input
+                      type="text"
+                      pattern="\d*"
                       v-mask="'#### #### #### ####'"
                       @focus="checkInout('plastCard', plastCard)"
                       @input="enterInput('plastCard', plastCard)"
