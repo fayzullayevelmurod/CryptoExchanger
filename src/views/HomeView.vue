@@ -219,11 +219,11 @@
                   </label>
                   <div
                     class="input"
-                    v-mask="'#### #### #### ####'"
+                    
                     :class="check.plastCard ? check.plastCard : ''"
                   >
                     <input
-                      type="text"
+                      v-mask="'#### #### #### ####'"
                       @focus="checkInout('plastCard', plastCard)"
                       @input="enterInput('plastCard', plastCard)"
                       @blur="checkInput('plastCard', plastCard)"
