@@ -222,7 +222,7 @@
                     :class="check.plastCard ? check.plastCard : ''"
                   >
                     <input
-                      type="text"
+                      type="nubmer"
                       pattern="[0-9]*" 
                       inputmode="numeric"
                       v-mask="'#### #### #### ####'"
