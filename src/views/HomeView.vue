@@ -761,7 +761,7 @@ export default {
       );
     },
     hideTools1() {
-      clearTimeout(this.interval1);
+      clearTimeout(this.interval1)
       this.interval1 = setTimeout(
         function () {
           this.tools1 = false;
