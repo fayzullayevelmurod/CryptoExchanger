@@ -164,6 +164,8 @@
                   >
                     <input
                       type="number"
+                      pattern="[0-9]*" 
+                      inputmode="numeric"
                       @focus="checkInout('senderInput', senderInput)"
                       @input="enterInput('senderInput', senderInput)"
                       @blur="checkInput('senderInput', senderInput)"
