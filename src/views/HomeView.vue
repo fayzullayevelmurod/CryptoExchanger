@@ -320,8 +320,12 @@
                 </div>
                 <div class="form_control input_receive promokod_wrapper calculate_mobile_9">
                   <label class="right">
-                    <span class="min">
+                    <span class="min" @mouseenter="showTools()" @mouseleave="hideTools()">
                       Промокод, необязательно
+                      <div class="tools" :class="tools ? 'tools_active' : ''">
+                      Чтобы получить промокод напишите нам
+                      <img src="@/assets/images/tools_icon.svg" alt="sdfasd">
+                    </div>
                       <img src="@/assets/images/answer_icon.svg" alt="" />
                     </span>
                   </label>
@@ -543,6 +547,8 @@ export default {
       amount_type: false,
       mobile_sender_item: "",
       mobile_receive_item: "",
+      tools: false,
+      interval: '',
     };
   },
   watch: {
@@ -671,6 +677,18 @@ export default {
       this.mobile_sender_item = "";
       this.mobile_receive_item = "";
       document.querySelector('body').style.overflow = "auto";
+    },
+    showTools () {
+      clearTimeout(this.interval);
+      this.interval = setTimeout(function () {
+        this.tools = true;
+      }.bind(this), 400);
+    },
+    hideTools () {
+      clearTimeout(this.interval);
+      this.interval = setTimeout(function () {
+        this.tools = false;
+      }.bind(this), 400)
     }
   },
 };
