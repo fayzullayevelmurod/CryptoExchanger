@@ -688,7 +688,7 @@ export default {
       clearTimeout(this.interval);
       this.interval = setTimeout(function () {
         this.tools = false;
-      }.bind(this), 400)
+      }.bind(this), 400);
     }
   },
 };
