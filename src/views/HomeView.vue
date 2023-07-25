@@ -223,7 +223,8 @@
                   >
                     <input
                       type="text"
-                      pattern="\d*"
+                      pattern="[0-9]*" 
+                      inputmode="numeric"
                       v-mask="'#### #### #### ####'"
                       @focus="checkInout('plastCard', plastCard)"
                       @input="enterInput('plastCard', plastCard)"
