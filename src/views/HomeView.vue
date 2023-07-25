@@ -4,7 +4,11 @@
       <img src="@/assets/images/index_bg_1.png" alt="" class="index_bg_1" />
       <img src="@/assets/images/index_bg_2.png" alt="" class="index_bg_2" />
       <img src="@/assets/images/index_bg_3.png" alt="" class="index_bg_3" />
-      <img src="@/assets/images/index_bg_3_mobile.png" alt="" class="index_bg_3_mobile">
+      <img
+        src="@/assets/images/index_bg_3_mobile.png"
+        alt=""
+        class="index_bg_3_mobile"
+      />
       <img src="@/assets/images/index_bg_4.png" alt="" class="index_bg_4" />
 
       <div class="main_container">
@@ -61,7 +65,10 @@
     <section id="calculation">
       <div class="main_container">
         <div class="calculation_wrapper">
-          <div class="amont_type" :class="amount_type ? 'mobile_amont_type' : ''">
+          <div
+            class="amont_type"
+            :class="amount_type ? 'mobile_amont_type' : ''"
+          >
             <div class="type_item sender" :class="mobile_sender_item">
               <div class="title">Отдаете</div>
               <div
@@ -153,7 +160,9 @@
                 <h3 class="second">Получаете</h3>
               </div>
               <div class="input_group">
-                <div class="form_control input_sender form_control_top sender_top calculate_mobile_1">
+                <div
+                  class="form_control input_sender form_control_top sender_top calculate_mobile_1"
+                >
                   <label>
                     <span class="min">Min: 700 RUB</span>
                     <span class="max">Max: 500000 RUB</span>
@@ -164,25 +173,34 @@
                   >
                     <input
                       type="number"
-                      pattern="[0-9]*" 
+                      pattern="[0-9]*"
                       inputmode="numeric"
                       @focus="checkInout('senderInput', senderInput)"
                       @input="enterInput('senderInput', senderInput)"
                       @blur="checkInput('senderInput', senderInput)"
                       v-model="senderInput"
                     />
-                    <div class="calculate_cender" @click="mobileAmount(select.datas.receive.unit)">
+                    <div
+                      class="calculate_cender"
+                      @click="mobileAmount(select.datas.receive.unit)"
+                    >
                       <div class="amount_name">
                         {{ select.datas.receive.unit }}
                       </div>
                       <img
-                        :src="'src/assets/images/'+select.datas.receive.icon+'.svg'"
+                        :src="
+                          'src/assets/images/' +
+                          select.datas.receive.icon +
+                          '.svg'
+                        "
                         alt=""
                       />
                     </div>
                   </div>
                 </div>
-                <div class="form_control input_receive form_control_top receive_top calculate_mobile_5">
+                <div
+                  class="form_control input_receive form_control_top receive_top calculate_mobile_5"
+                >
                   <label>
                     <span class="min"
                       >Резервы: {{ select.datas.sender.amount }}</span
@@ -193,7 +211,10 @@
                     :class="receiverInput ? 'input_active' : ''"
                   >
                     <input type="number" disabled v-model="receiverInput" />
-                    <div class="calculate_cender" @click="mobileAmount(select.datas.sender.unit)">
+                    <div
+                      class="calculate_cender"
+                      @click="mobileAmount(select.datas.sender.unit)"
+                    >
                       <div class="amount_name">
                         {{ select.datas.sender.unit }}
                       </div>
@@ -208,24 +229,34 @@
                     </div>
                   </div>
                 </div>
-                <button @click="changeCalculation()" class="calculate_btn calculate_mobile_4">
+                <button
+                  @click="changeCalculation()"
+                  class="calculate_btn calculate_mobile_4"
+                >
                   <img src="@/assets/images/calculate_icon.svg" alt="" />
                 </button>
               </div>
 
               <div class="input_group warning">
                 <div class="form_control input_sender calculate_mobile_2">
-                  <label>
+                  <label @mouseenter="showTools1()" @mouseleave="hideTools1()">
                     <span class="min">Номер карты отправителя</span>
+                    <div class="tools" :class="tools1 ? 'tools_active1' : ''">
+                        Чтобы получить номер карты напишите нам
+                        <img
+                          src="@/assets/images/tools_icon.svg"
+                          alt="sdfasd"
+                        />
+                      </div>
                     <img src="@/assets/images/answer_icon.svg" alt="" />
                   </label>
                   <div
-                    class="input"                    
+                    class="input"
                     :class="check.plastCard ? check.plastCard : ''"
                   >
                     <input
                       type="nubmer"
-                      pattern="[0-9]*" 
+                      pattern="[0-9]*"
                       inputmode="numeric"
                       v-mask="'#### #### #### ####'"
                       @focus="checkInout('plastCard', plastCard)"
@@ -234,14 +265,19 @@
                       v-model="plastCard"
                     />
                     <div class="calculate_cender">
-                      <img src="@/assets/images/siberbank_blur_icon.png" alt="" />
+                      <img
+                        src="@/assets/images/siberbank_blur_icon.png"
+                        alt=""
+                      />
                     </div>
                   </div>
                   <span v-if="error.plastCard" class="error">
                     {{ error.plastCard }}
                   </span>
                 </div>
-                <div class="form_control input_receive kashelog  calculate_mobile_6">
+                <div
+                  class="form_control input_receive kashelog calculate_mobile_6"
+                >
                   <label>
                     <span class="min">Bitcoin кошелёк получателя</span>
                   </label>
@@ -285,7 +321,10 @@
                     />
                     <div class="calculate_cender">
                       <div class="amount_name"></div>
-                      <img src="@/assets/images/siberbank_blur_icon.png" alt="" />
+                      <img
+                        src="@/assets/images/siberbank_blur_icon.png"
+                        alt=""
+                      />
                     </div>
                   </div>
                   <span v-if="error.fullName" class="error">{{
@@ -320,14 +359,23 @@
                     error.email
                   }}</span>
                 </div>
-                <div class="form_control input_receive promokod_wrapper calculate_mobile_9">
+                <div
+                  class="form_control input_receive promokod_wrapper calculate_mobile_9"
+                >
                   <label class="right">
-                    <span class="min" @mouseenter="showTools()" @mouseleave="hideTools()">
+                    <span
+                      class="min"
+                      @mouseenter="showTools2()"
+                      @mouseleave="hideTools2()"
+                    >
                       Промокод, необязательно
-                      <div class="tools" :class="tools ? 'tools_active' : ''">
-                      Чтобы получить промокод напишите нам
-                      <img src="@/assets/images/tools_icon.svg" alt="sdfasd">
-                    </div>
+                      <div class="tools" :class="tools ? 'tools_active2' : ''">
+                        Чтобы получить промокод напишите нам
+                        <img
+                          src="@/assets/images/tools_icon.svg"
+                          alt="sdfasd"
+                        />
+                      </div>
                       <img src="@/assets/images/answer_icon.svg" alt="" />
                     </span>
                   </label>
@@ -370,7 +418,10 @@
                 </label>
               </div>
 
-              <button @click="confirmationModal()" class="submit calculate_mobile_11">
+              <button
+                @click="confirmationModal()"
+                class="submit calculate_mobile_11"
+              >
                 Перейти к оплате
               </button>
             </div>
@@ -550,7 +601,9 @@ export default {
       mobile_sender_item: "",
       mobile_receive_item: "",
       tools: false,
-      interval: '',
+      tools1: false,
+      interval: "",
+      interval1: "",
     };
   },
   watch: {
@@ -571,7 +624,7 @@ export default {
     },
   },
   methods: {
-    getPhotoUrl (img) {
+    getPhotoUrl(img) {
       return `./assets/images/${img}.svg`;
     },
     changeCalculation() {
@@ -594,9 +647,9 @@ export default {
       this.select.datas.toRubleAmount = data.toRuble;
       this.closeMobileAmount();
     },
-    changeSelectSender (i) {
+    changeSelectSender(i) {
       this.select.sender = i;
-      this.closeMobileAmount()
+      this.closeMobileAmount();
     },
     closeCommentModal() {
       this.commentModal = false;
@@ -622,7 +675,7 @@ export default {
         this.check[el] = "input_active";
       }
     },
-    confirmationModal () {
+    confirmationModal() {
       this.confirmation = true;
       console.log(this.select.datas);
 
@@ -639,8 +692,8 @@ export default {
             amount: this.receiverInput,
             cashelog: this.cashelog,
             unit: this.select.datas.sender.unit,
-          }
-        }
+          },
+        };
         this.datas = data;
       } else {
         let data = {
@@ -655,13 +708,13 @@ export default {
             amount: this.senderInput,
             cashelog: this.cashelog,
             unit: this.select.datas.receive.unit,
-          }
-        }
+          },
+        };
         this.datas = data;
       }
-      console.log(this.datas)
+      console.log(this.datas);
     },
-    mobileAmount (unit) {
+    mobileAmount(unit) {
       if (unit == "RUB") {
         this.amount_type = true;
         this.mobile_sender_item = "mobil_amount_item";
@@ -672,26 +725,50 @@ export default {
         this.mobile_sender_item = "";
       }
 
-      document.querySelector('body').style.overflow = "hidden";
+      document.querySelector("body").style.overflow = "hidden";
     },
-    closeMobileAmount () {
+    closeMobileAmount() {
       this.amount_type = false;
       this.mobile_sender_item = "";
       this.mobile_receive_item = "";
-      document.querySelector('body').style.overflow = "auto";
+      document.querySelector("body").style.overflow = "auto";
     },
-    showTools () {
+    showTools2() {
       clearTimeout(this.interval);
-      this.interval = setTimeout(function () {
-        this.tools = true;
-      }.bind(this), 400);
+      this.interval = setTimeout(
+        function () {
+          this.tools = true;
+        }.bind(this),
+        400
+      );
     },
-    hideTools () {
+    showTools1() {
+      clearTimeout(this.interval1);
+      this.interval1 = setTimeout(
+        function () {
+          this.tools1 = true;
+        }.bind(this),
+        400
+      );
+    },
+    hideTools2() {
       clearTimeout(this.interval);
-      this.interval = setTimeout(function () {
-        this.tools = false;
-      }.bind(this), 400);
-    }
+      this.interval = setTimeout(
+        function () {
+          this.tools = false;
+        }.bind(this),
+        400
+      );
+    },
+    hideTools1() {
+      clearTimeout(this.interval1);
+      this.interval1 = setTimeout(
+        function () {
+          this.tools1 = false;
+        }.bind(this),
+        400
+      );
+    },
   },
 };
 </script>
