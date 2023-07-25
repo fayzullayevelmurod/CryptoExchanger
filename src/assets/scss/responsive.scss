@@ -1438,6 +1438,12 @@
     .confirmation {
         .content {
             width: calc(100% - 30px);
+            overflow-y: scroll;
+            height: 90vh;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             .content_head {
                 padding: 15px;
@@ -1560,6 +1566,15 @@
                         .kachelog_amount {
                             margin-bottom: 36px;
                         }
+                    }
+                }
+            }
+
+            .right {
+                .right_content {
+                    .description {
+                        width: calc(100% - 30px);
+                        margin: auto;
                     }
                 }
             }
