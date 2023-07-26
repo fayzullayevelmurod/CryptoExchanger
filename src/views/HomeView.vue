@@ -208,9 +208,13 @@
                   </label>
                   <div
                     class="input"
-                    :class="receiverInput ? 'input_active' : ''"
+                    :class="check.receiverInput ? check.receiverInput : 'input'"
                   >
-                    <input type="number" disabled v-model="receiverInput" />
+                    <input type="number" pattern="[0-9]*"
+                      inputmode="numeric"
+                      @focus="checkInout('receiverInput', receiverInput)"
+                      @input="enterInput('receiverInput', receiverInput)"
+                      @blur="checkInput('receiverInput', receiverInput)" v-model="receiverInput" />
                     <div
                       class="calculate_cender"
                       @click="mobileAmount(select.datas.sender.unit)"
@@ -583,6 +587,7 @@ export default {
           },
         },
       },
+      input: 'receiver',
       senderInput: "",
       receiverInput: "",
       changed: false,
@@ -608,20 +613,35 @@ export default {
   },
   watch: {
     senderInput() {
-      if (!this.changed) {
-        if (this.select.datas.receive.unit == "RUB") {
-          this.receiverInput = (
-            this.senderInput * this.select.datas.toRubleAmount
-          ).toFixed(4);
+      if(this.input == 'sender') {
+        if (!this.changed) {
+          if (this.select.datas.receive.unit == "RUB") {
+            this.receiverInput = (
+              this.senderInput * this.select.datas.toRubleAmount
+            ).toFixed(4);
+          } else {
+            this.receiverInput = Number((this.senderInput / this.select.datas.toRubleAmount).toFixed(2));
+          }
         } else {
-          this.receiverInput = (
-            this.senderInput / this.select.datas.toRubleAmount
-          ).toFixed(2);
+          this.changed = false;
         }
-      } else {
-        this.changed = false;
       }
     },
+    receiverInput() {
+      if (this.input == 'receiver') {
+        if (!this.changed) {
+          if (this.select.datas.receive.unit == "RUB") {
+            this.senderInput = Number((this.receiverInput / this.select.datas.toRubleAmount).toFixed(4));
+          } else {
+            this.senderInput = (
+              this.receiverInput * this.select.datas.toRubleAmount
+            ).toFixed(2);
+          }
+        } else {
+          this.changed = false;
+        }
+      }
+    }
   },
   methods: {
     getPhotoUrl(img) {
@@ -668,6 +688,14 @@ export default {
     checkInout(el, value) {
       if (value == "") {
         this.check[el] = "focus_input";
+      }
+
+      if (el == "senderInput") {
+        this.input = 'sender'
+      }
+
+      if (el == "receiverInput") {
+        this.input ='receiver'
       }
     },
     enterInput(el, value) {
